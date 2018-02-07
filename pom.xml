@@ -12,7 +12,6 @@
         <module>template-infrastructure</module>
         <module>template-service</module>
         <module>template-web</module>
-        <!--<module>rbac-commons</module>-->
     </modules>
 
     <parent>
