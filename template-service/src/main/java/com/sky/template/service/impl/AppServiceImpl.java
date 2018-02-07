@@ -2,7 +2,7 @@ package com.sky.template.service.impl;
 
 import com.sky.commons.utils.bean.BeanMapper;
 import com.sky.template.infrastructure.manager.AppManager;
-import com.sky.template.service.AppDto;
+import com.sky.template.infrastructure.pojo.dto.AppDto;
 import com.sky.template.service.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

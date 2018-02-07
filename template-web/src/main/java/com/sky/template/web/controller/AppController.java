@@ -1,8 +1,8 @@
 package com.sky.template.web.controller;
 
-import com.sky.template.service.AppDto;
+import com.sky.commons.web.annotation.OuterResponseBody;
+import com.sky.template.infrastructure.pojo.dto.AppDto;
 import com.sky.template.service.AppService;
-import com.sky.template.web.utils.annotation.OuterResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

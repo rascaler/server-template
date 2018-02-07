@@ -1,4 +1,4 @@
-package com.sky.template.service;
+package com.sky.template.infrastructure.pojo.dto;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,6 +1,5 @@
 package com.sky.template.web.utils;
 
-import com.sky.template.web.utils.context.ApplicationContextUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
