@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.movie.infrastructure.mapper.VideoMapper">
+  <resultMap id="BaseResultMap" type="com.sky.movie.infrastructure.domain.Video">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="imgUrl" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="createdDate" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updatedDate" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="actors" jdbcType="VARCHAR" property="actors" />
+    <result column="publishDate" jdbcType="TIMESTAMP" property="publishDate" />
+    <result column="directors" jdbcType="VARCHAR" property="directors" />
+    <result column="lang" jdbcType="VARCHAR" property="lang" />
+    <result column="plot" jdbcType="VARCHAR" property="plot" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="plotImgUrl" jdbcType="VARCHAR" property="plotImgUrl" />
+  </resultMap>
+</mapper>

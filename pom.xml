@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sky.template</groupId>
-    <artifactId>template-parent</artifactId>
+    <groupId>com.sky.movie</groupId>
+    <artifactId>movie-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>template-infrastructure</module>
-        <module>template-service</module>
-        <module>template-web</module>
+        <module>movie-infrastructure</module>
+        <module>movie-service</module>
+        <module>movie-web</module>
     </modules>
 
     <parent>
@@ -145,7 +145,7 @@
                 <mysql.username>root</mysql.username>
                 <mysql.password>123456</mysql.password>
                 <mysql.url>
-                    jdbc:mysql://127.0.0.1:3306/rbac?allowMultiQueries=true&amp;tinyInt1isBit=false&amp;zeroDateTimeBehavior=convertToNull
+                    jdbc:mysql://127.0.0.1:3306/movie?allowMultiQueries=true&amp;tinyInt1isBit=false&amp;zeroDateTimeBehavior=convertToNull
                 </mysql.url>
                 <cors.enable>true</cors.enable>
                 <login.required>false</login.required>

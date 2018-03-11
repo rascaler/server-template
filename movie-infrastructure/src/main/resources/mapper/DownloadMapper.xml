@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.movie.infrastructure.mapper.DownloadMapper">
+  <resultMap id="BaseResultMap" type="com.sky.movie.infrastructure.domain.Download">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="videoId" jdbcType="INTEGER" property="videoId" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+</mapper>

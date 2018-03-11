@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.movie.infrastructure.mapper.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.sky.movie.infrastructure.domain.Category">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="parentId" jdbcType="INTEGER" property="parentId" />
+    <result column="queue" jdbcType="INTEGER" property="queue" />
+    <result column="createdDate" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updatedDate" jdbcType="TIMESTAMP" property="updatedDate" />
+  </resultMap>
+</mapper>
