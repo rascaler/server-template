@@ -18,4 +18,19 @@
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="plotImgUrl" jdbcType="VARCHAR" property="plotImgUrl" />
   </resultMap>
+
+  <select id="selectRecentVideos" parameterType="java.lang.Integer" resultType="Video">
+    select v.* from tb_category_video c,tb_video v
+    where c.videoId = v.id
+    and c.categoryId = #{categoryId}
+    order by v.createdDate desc
+    limit 0,10
+  </select>
+
+  <select id="selectVideosByCategoryId" parameterType="java.lang.Integer" resultType="Video">
+    select v.* from tb_category_video c,tb_video v
+    where c.videoId = v.id
+    and c.categoryId = #{categoryId}
+    order by v.createdDate desc
+  </select>
 </mapper>

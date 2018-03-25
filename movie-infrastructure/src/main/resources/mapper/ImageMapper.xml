@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.movie.infrastructure.mapper.ImageMapper" >
+  <resultMap id="BaseResultMap" type="com.sky.movie.infrastructure.domain.Image" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="createdDate" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="updateDate" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="urls" property="urls" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+  <select id="selectCategoryImages" parameterType="java.lang.Integer" resultType="Image">
+     select i.id,i.name,i.createdDate,i.updatedDate
+     from tb_image i,tb_category_image ci
+     where i.id =ci.imageId
+     and ci.categoryId = #{categoryId}
+  </select>
+</mapper>

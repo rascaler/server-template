@@ -86,6 +86,16 @@ public class VideoManagerImpl extends DefaultManager<Video> implements VideoMana
         return 1;
     }
 
+    @Override
+    public List<Video> listRecentVideos(Integer categoryId) {
+        return videoMapper.selectRecentVideos(categoryId);
+    }
+
+    @Override
+    public List<Video> listVideosByCategoryId(Integer categoryId) {
+        return videoMapper.selectVideosByCategoryId(categoryId);
+    }
+
     public Integer getType(String type) {
         if(type.startsWith("thunder")) return 1;// 迅雷
         if(type.startsWith("qqdl")) return 2; //旋风

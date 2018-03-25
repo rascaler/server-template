@@ -5,13 +5,11 @@ import lombok.Setter;
 
 import java.util.Date;
 import javax.persistence.*;
+
 @Getter
 @Setter
-@Table(name = "tb_category")
-public class Category {
-    /**
-     * 类别id
-     */
+@Table(name = "tb_image")
+public class Image {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,31 +18,13 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    /**
-     * 地址
-     */
-    @Column(name = "url")
-    private String url;
-
-    /**
-     * 上级
-     */
-    @Column(name = "parentId")
-    private Integer parentId;
-
-    /**
-     * 序列
-     */
-    @Column(name = "queue")
-    private Integer queue;
-
-    @Column(name = "showTab")
-    private Integer showTab;
-
     @Column(name = "createdDate")
     private Date createdDate;
 
     @Column(name = "updatedDate")
     private Date updatedDate;
+
+    @Column(name = "urls")
+    private String urls;
 
 }

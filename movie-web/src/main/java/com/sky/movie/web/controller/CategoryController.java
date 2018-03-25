@@ -2,6 +2,8 @@ package com.sky.movie.web.controller;
 
 import com.sky.commons.web.annotation.OuterResponseBody;
 import com.sky.movie.infrastructure.pojo.dto.CategoryDto;
+import com.sky.movie.infrastructure.pojo.dto.CategoryNode;
+import com.sky.movie.infrastructure.pojo.dto.VideoTabDto;
 import com.sky.movie.service.CategoryService;
 import com.sky.movie.service.VideoService;
 import com.sky.movie.service.spiders.MovieSpider;
@@ -18,35 +20,30 @@ import java.util.List;
  * @Date 2017/4/1 14:09
  */
 @Controller
-@RequestMapping("/app")
-public class AppController {
+@RequestMapping("/category")
+public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
-    private VideoService videoService;
-
-    @Autowired
-    private MovieSpider movieSpider;
-
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/getCategoryTree", method = RequestMethod.GET)
     @OuterResponseBody
-    List<CategoryDto> getAll() {
-        return categoryService.getAll();
+    public List<CategoryNode> getCategoryTree() {
+        return categoryService.getCategoryTree();
     }
 
-    @RequestMapping(value = "/startSpider", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/getVedioTabs", method = RequestMethod.GET)
     @OuterResponseBody
-    void startSpider(String id) {
-        // 亚洲情色 504页 1
-        // 制服丝袜 80页 2
-        // 欧美性爱 98页 3
-        // 网友自拍 37页 4
-        // 经典三级 34页 5
-        // 乱伦虐待 14页 6
-        // 乱伦虐待 8页 7
-        // 成人动漫 28页 8
-        movieSpider.startSpider(id);
+    public List<VideoTabDto> getVedioTabs() {
+        return categoryService.getVedioTabs();
     }
+
+    @RequestMapping(value = "/getCategoryVideo", method = RequestMethod.GET)
+    @OuterResponseBody
+    public VideoTabDto getCategoryVideo(Integer id) {
+        return categoryService.getCategoryVideo(id);
+    }
+
+
 }

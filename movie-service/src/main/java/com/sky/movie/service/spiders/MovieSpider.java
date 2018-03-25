@@ -26,18 +26,18 @@ public class MovieSpider {
     @Autowired
     private VideoService videoService;
 
-    public void startSpider () {
-        String domain = "https://666lu.vip";
-        String template = "https://666lu.vip/list/1%s.html";
+    public void startSpider (String id) {
+        String domain = "https://777av.vip";
+        String template = "https://777av.vip/list/"+id+"%s.html";
         ArrayList<String> urls = new ArrayList<String>();
         urls.add(String.format(template, ""));
-        for (int index = 2;index < 504;index++){
+        for (int index = 2;index < 10;index++){
             urls.add(String.format(template, "-" + index));
         }
 
         for(String url : urls) {
             try {
-                logger.info("开始抓取：url:" + url);
+                logger.info("开始抓取电影：url:" + url);
                 ArrayList<String> movieUrls = new ArrayList<String>();
                 String content = JsoupHelper.get(url, null, "UTF-8", null);
                 Document doc = Jsoup.parse(content);
@@ -81,9 +81,9 @@ public class MovieSpider {
                     }
                 }
                 videoService.addVideos(movies);
-                logger.info("抓取完成：url:" + url);
+                logger.info("抓取电影完成：url:" + url);
             }catch (Exception e) {
-                logger.error("抓取失败 url:" + url, e);
+                logger.error("抓取电影失败 url:" + url, e);
             }
         }
 
