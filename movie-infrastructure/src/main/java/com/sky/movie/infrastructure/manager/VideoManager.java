@@ -13,5 +13,5 @@ public interface VideoManager extends BaseManager<Video> {
 
     List<Video> listRecentVideos(Integer categoryId);
 
-    List<Video> listVideosByCategoryId(Integer categoryId);
+    List<VideoDto> listVideosByCategoryId(Integer categoryId);
 }

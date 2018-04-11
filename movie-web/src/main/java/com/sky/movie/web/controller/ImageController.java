@@ -44,6 +44,12 @@ public class ImageController {
         imageSpider.startImageSpider(key);
     }
 
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    @OuterResponseBody
+    public ImageDto detail(Integer id) {
+        return imageService.getDetail(id);
+    }
+
 
 
 

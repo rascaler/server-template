@@ -13,4 +13,5 @@ public class ImageInfo {
     private String name;
     private String url;
     private String imageUrls;
+    private Integer categoryId;
 }

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -19,4 +20,8 @@ public class ImageDto implements Serializable {
 
     private String urls;
 
+    private String[] imageUrls;
+
+    /////////扩展字段///////////////
+    private Integer categoryId=16;
 }

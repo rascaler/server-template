@@ -27,9 +27,10 @@
     limit 0,10
   </select>
 
-  <select id="selectVideosByCategoryId" parameterType="java.lang.Integer" resultType="Video">
-    select v.* from tb_category_video c,tb_video v
+  <select id="selectVideosByCategoryId" parameterType="java.lang.Integer" resultType="com.sky.movie.infrastructure.pojo.dto.VideoDto">
+    select v.*,s.pv,s.uv from tb_category_video c,tb_video v,tb_statistics s
     where c.videoId = v.id
+    and s.videoId = v.id
     and c.categoryId = #{categoryId}
     order by v.createdDate desc
   </select>

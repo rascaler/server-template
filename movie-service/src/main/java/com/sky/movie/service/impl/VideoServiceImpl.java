@@ -8,14 +8,13 @@ import com.sky.commons.utils.constant.BasicCode;
 import com.sky.commons.utils.exception.ServiceException;
 import com.sky.movie.infrastructure.domain.Category;
 import com.sky.movie.infrastructure.domain.CategoryVideo;
+import com.sky.movie.infrastructure.domain.Download;
 import com.sky.movie.infrastructure.domain.Video;
 import com.sky.movie.infrastructure.manager.CategoryManager;
 import com.sky.movie.infrastructure.manager.CategoryVideoManager;
+import com.sky.movie.infrastructure.manager.DownloadManager;
 import com.sky.movie.infrastructure.manager.VideoManager;
-import com.sky.movie.infrastructure.pojo.dto.CategoryDto;
-import com.sky.movie.infrastructure.pojo.dto.MovieInfo;
-import com.sky.movie.infrastructure.pojo.dto.VideoDetailDto;
-import com.sky.movie.infrastructure.pojo.dto.VideoDto;
+import com.sky.movie.infrastructure.pojo.dto.*;
 import com.sky.movie.service.VideoService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +37,9 @@ public class VideoServiceImpl implements VideoService {
 
     @Autowired
     private CategoryVideoManager categoryVideoManager;
+
+    @Autowired
+    private DownloadManager downloadManager;
 
     @Override
     public void addVideos(List<MovieInfo> movies) throws ServiceException {
@@ -65,15 +67,18 @@ public class VideoServiceImpl implements VideoService {
             List<CategoryDto> categories = BeanMapper.mapList(categoryManager.selectByExample(example),CategoryDto.class);
             detail.setCategories(categories);
         }
+        // 查询下载地址
+        Download downloadQuery = new Download();
+        downloadQuery.setVideoId(id);
+        List<DownloadDto> downloadList = BeanMapper.mapList(downloadManager.selectList(downloadQuery), DownloadDto.class);
+        detail.setDownloads(downloadList);
         return detail;
     }
 
     @Override
     public PageInfo<VideoDto> pageVideos(Integer categoryId, PageParams pageParams) {
         PageHelper.startPage(pageParams.getPageNum(),pageParams.getPageSize());
-        List<Video> list = videoManager.listVideosByCategoryId(categoryId);
-        PageInfo pageInfo = new PageInfo(list);
-        pageInfo.setList(BeanMapper.mapList(list, VideoDto.class));
-        return pageInfo;
+        List<VideoDto> list = videoManager.listVideosByCategoryId(categoryId);
+        return new PageInfo(list);
     }
 }

@@ -2,16 +2,11 @@ package com.sky.movie.infrastructure.manager.impl;
 
 import com.sky.commons.utils.constant.BasicCode;
 import com.sky.commons.utils.exception.ServiceException;
-import com.sky.movie.infrastructure.domain.Category;
-import com.sky.movie.infrastructure.domain.CategoryVideo;
-import com.sky.movie.infrastructure.domain.Download;
-import com.sky.movie.infrastructure.domain.Video;
+import com.sky.movie.infrastructure.domain.*;
 import com.sky.movie.infrastructure.manager.VideoManager;
-import com.sky.movie.infrastructure.mapper.CategoryMapper;
-import com.sky.movie.infrastructure.mapper.CategoryVideoMapper;
-import com.sky.movie.infrastructure.mapper.DownloadMapper;
-import com.sky.movie.infrastructure.mapper.VideoMapper;
+import com.sky.movie.infrastructure.mapper.*;
 import com.sky.movie.infrastructure.pojo.dto.MovieInfo;
+import com.sky.movie.infrastructure.pojo.dto.VideoDto;
 import com.sky.movie.infrastructure.utils.DefaultManager;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +30,9 @@ public class VideoManagerImpl extends DefaultManager<Video> implements VideoMana
 
     @Autowired
     private DownloadMapper downloadMapper;
+
+    @Autowired
+    private StatisticsMapper statisticsMapper;
 
     @Override
     public int addVideos(List<MovieInfo> movieInfos) {
@@ -81,7 +79,10 @@ public class VideoManagerImpl extends DefaultManager<Video> implements VideoMana
                 }
                 downloadMapper.insertList(downloads);
             }
-
+            // 写入pv,uv
+            Statistics statistics = new Statistics();
+            statistics.setVideoId(video.getId());
+            statisticsMapper.insertSelective(statistics);
         }
         return 1;
     }
@@ -92,7 +93,7 @@ public class VideoManagerImpl extends DefaultManager<Video> implements VideoMana
     }
 
     @Override
-    public List<Video> listVideosByCategoryId(Integer categoryId) {
+    public List<VideoDto> listVideosByCategoryId(Integer categoryId) {
         return videoMapper.selectVideosByCategoryId(categoryId);
     }
 
