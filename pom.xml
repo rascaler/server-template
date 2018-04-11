@@ -141,6 +141,10 @@
     <profiles>
         <profile>
             <id>local</id>
+            <activation>
+                <!-- 设置默认激活这个配置 -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <mysql.username>root</mysql.username>
                 <mysql.password>123456</mysql.password>
