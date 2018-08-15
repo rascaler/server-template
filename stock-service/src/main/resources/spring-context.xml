@@ -38,10 +38,6 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <context:component-scan base-package="com.sky.rbac"/>
-
-    <context:property-placeholder location="classpath:application.properties"/>
-
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClass}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -71,11 +67,11 @@
                 <value>classpath:mapper/*.xml</value>
             </array>
         </property>
-        <property name="typeAliasesPackage" value="com.sky.rbac.infrastructure.domain"/>
+        <property name="typeAliasesPackage" value="com.sky.stock.infrastructure.domain"/>
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageHelper">
-                    <!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
+                    <!--&lt;!&ndash; 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 &ndash;&gt;-->
                     <property name="properties">
                         <value>
                             reasonable=true
@@ -90,9 +86,9 @@
     </bean>
 
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.sky.rbac.infrastructure.mapper"/>
+        <property name="basePackage" value="com.sky.stock.infrastructure.mapper"/>
         <!-- 3.2.2版本新特性，markerInterface可以起到mappers配置的作用，详细情况需要看Marker接口类 -->
-        <property name="markerInterface" value="com.sky.template.infrastructure.utils.MyMapper"/>
+        <property name="markerInterface" value="com.sky.stock.infrastructure.utils.MyMapper"/>
         <!-- 通用Mapper通过属性注入进行配置，默认不配置时会注册Mapper<T>接口
         <property name="properties">
             <value>
@@ -109,7 +105,7 @@
     <aop:aspectj-autoproxy/>
 
     <aop:config>
-        <aop:pointcut id="appService" expression="execution(* com.sky.rbac.service..*Service*.*(..))"/>
+        <aop:pointcut id="appService" expression="execution(* com.sky.stock.infrastructure.manager..*Manager*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="appService"/>
     </aop:config>
 
@@ -125,7 +121,6 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-
 
 </beans>
 
