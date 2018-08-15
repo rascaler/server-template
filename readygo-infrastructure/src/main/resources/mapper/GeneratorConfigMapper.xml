@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.readygo.infrastructure.mapper.GeneratorConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.sky.readygo.infrastructure.domain.GeneratorConfig" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="dataSourceId" property="dataSourceId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="schemaName" property="schemaName" jdbcType="VARCHAR" />
+    <result column="tableName" property="tableName" jdbcType="VARCHAR" />
+    <result column="columnName" property="columnName" jdbcType="VARCHAR" />
+    <result column="config" property="config" jdbcType="CLOB" />
+    <result column="createdDate" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="updatedDate" property="updatedDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

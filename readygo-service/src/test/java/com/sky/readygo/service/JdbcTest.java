@@ -35,6 +35,12 @@ public class JdbcTest {
         DruidPooledConnection connection =  dataSource.getConnection();
         // 获取所有表
         DatabaseMetaData metaData = connection.getMetaData();
+        ResultSet resultSet1 = metaData.getCatalogs();
+        resultSet1 = metaData.getCatalogs();
+        while(resultSet1.next()){
+            System.out.println(resultSet1.getString(1));
+        }
+        System.out.println("###############");
         ResultSet resultSet = metaData.getTables(null, null, null, new String[] {"TABLE"});
         while (resultSet.next()) {
             System.out.println(resultSet.getObject("TABLE_NAME"));
@@ -114,7 +120,6 @@ public class JdbcTest {
             fieldMap.put("Scale", String.valueOf(metaData.getScale(i)));
             fieldMap.put("SchemaName", metaData.getSchemaName(i));
             fieldMap.put("TableName", metaData.getTableName(i));
-            fieldMap.put("SchemaName", metaData.getSchemaName(i));
             System.out.println(JSON.toJSONString(fieldMap));
         }
     }
