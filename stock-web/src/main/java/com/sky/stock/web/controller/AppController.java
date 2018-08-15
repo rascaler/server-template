@@ -1,7 +1,9 @@
 package com.sky.stock.web.controller;
 
 import com.sky.commons.web.annotation.OuterResponseBody;
+import com.sky.stock.infrastructure.domain.mongo.TestMongo;
 import com.sky.stock.infrastructure.pojo.dto.AppDto;
+import com.sky.stock.infrastructure.repository.TestRepository;
 import com.sky.stock.service.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ public class AppController {
     @Autowired
     private AppService appService;
 
+    @Autowired
+    private TestRepository testRepository;
+
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     @OuterResponseBody
     List<AppDto> getAll() {
@@ -33,5 +38,11 @@ public class AppController {
     @OuterResponseBody
     AppDto getOne() {
         return appService.getOne();
+    }
+
+    @RequestMapping(value = "/testMongo", method = RequestMethod.GET)
+    @OuterResponseBody
+    List<TestMongo> testMongo() {
+        return testRepository.findByName("qing");
     }
 }
