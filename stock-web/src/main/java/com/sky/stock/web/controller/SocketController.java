@@ -1,10 +1,11 @@
 package com.sky.stock.web.controller;
 
+import com.huobi.api.ApiClient;
+import com.huobi.response.KlineResponse;
 import com.sky.commons.web.annotation.OuterResponseBody;
 import com.sky.stock.infrastructure.domain.mongo.TestMongo;
 import com.sky.stock.infrastructure.pojo.dto.AppDto;
 import com.sky.stock.infrastructure.repository.TestRepository;
-import com.sky.stock.service.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,31 +19,29 @@ import java.util.List;
  * @Date 2017/4/1 14:09
  */
 @Controller
-@RequestMapping("/app")
-public class AppController {
+@RequestMapping("/socket")
+public class SocketController {
 
-    @Autowired
-    private AppService appService;
-
-    @Autowired
-    private TestRepository testRepository;
-
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/start", method = RequestMethod.GET)
     @OuterResponseBody
-    List<AppDto> getAll() {
-        return appService.getAll();
+    KlineResponse start() {
+        String API_KEY = "ad0ec705-ae83da3e-5e595370-d9517";
+        String API_SECRET = "8b321ade-4442682f-db441702-84d43";
+        ApiClient client = new ApiClient(API_KEY, API_SECRET);
+        return client.kline("btcusdt", "5min", "100");
     }
 
 
-    @RequestMapping(value = "/getOne", method = RequestMethod.GET)
+    @RequestMapping(value = "/stop", method = RequestMethod.GET)
     @OuterResponseBody
-    AppDto getOne() {
-        return appService.getOne();
+    void stop() {
+
     }
 
-    @RequestMapping(value = "/testMongo", method = RequestMethod.GET)
+    @RequestMapping(value = "/testSave", method = RequestMethod.GET)
     @OuterResponseBody
-    List<TestMongo> testMongo() {
-        return testRepository.findByName("qing");
+    void testSave() {
+
     }
+
 }

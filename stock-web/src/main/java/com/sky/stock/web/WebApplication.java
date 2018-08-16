@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @SpringBootApplication(scanBasePackages = "com.sky.stock")
 @ImportResource({"classpath:spring-context.xml","classpath:spring-mvc.xml"})
 @PropertySource({"classpath:application.properties"})
-@EnableMongoRepositories(basePackages = {"com.sky.stock.infrastructure.repository"})
+//@EnableMongoRepositories(basePackages = {"com.sky.stock.infrastructure.repository"})
 public class WebApplication {
 
     public static void main(String[] args) throws Exception {

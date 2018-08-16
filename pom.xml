@@ -134,6 +134,17 @@
                 <artifactId>fastjson</artifactId>
                 <version>1.2.40</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>3.11.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.huobi.api</groupId>
+                <artifactId>REST-Java-demo</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -149,7 +160,7 @@
                 <mysql.username>root</mysql.username>
                 <mysql.password>123456</mysql.password>
                 <mysql.url>
-                    jdbc:mysql://127.0.0.1:3306/rbac?allowMultiQueries=true&amp;tinyInt1isBit=false&amp;zeroDateTimeBehavior=convertToNull
+                    jdbc:mysql://127.0.0.1:3306/stock?allowMultiQueries=true&amp;tinyInt1isBit=false&amp;zeroDateTimeBehavior=convertToNull
                 </mysql.url>
                 <cors.enable>true</cors.enable>
                 <login.required>false</login.required>

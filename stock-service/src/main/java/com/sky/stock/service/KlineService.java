@@ -4,8 +4,6 @@ import com.sky.stock.infrastructure.pojo.dto.AppDto;
 
 import java.util.List;
 
-public interface AppService {
-    List<AppDto> getAll();
+public interface KlineService {
 
-    AppDto getOne();
 }

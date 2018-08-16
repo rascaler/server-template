@@ -67,7 +67,7 @@
    			 <appender-ref ref="applicationInfo"/>
   	 </logger> -->
 
-	<logger name="com.sky.rbac.infrastructure" level="DEBUG" />
+	<logger name="com.sky.stock.infrastructure" level="DEBUG" />
 	<logger name="org.springframework.data.mongodb.core" level="DEBUG" />
 
 	<!-- show parameters for hibernate sql 专为 Hibernate 定制 -->

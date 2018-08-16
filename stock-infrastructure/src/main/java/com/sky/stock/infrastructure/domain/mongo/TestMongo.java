@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -15,4 +16,6 @@ public class TestMongo implements Serializable {
     private String id;
     private String name;
     private Integer age;
+    private String[] lesson;
+    private BigDecimal money;
 }
